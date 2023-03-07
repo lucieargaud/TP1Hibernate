@@ -34,7 +34,7 @@ public class volServlet extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 
 		s = HibernateUtil.getSessionFactory().openSession();
-		log.debug("Connexion à la BDD et configuration d'hibernate depuis commande");
+		log.debug("Connexion à la BDD et configuration d'hibernate depuis vol");
 		
 		this.getServletContext().getRequestDispatcher("/WEB-INF/vol.jsp").forward(request, response);
 		
@@ -48,7 +48,7 @@ public class volServlet extends HttpServlet {
 		try 
 		{
 			s.beginTransaction();
-			log.info("Début enregistrement commande");
+			log.info("Début enregistrement vol");
 			
 			Vol v1 = new Vol (LocalDate.parse(request.getParameter("dateD")),request.getParameter("heureD"), 
 					LocalDate.parse(request.getParameter("dateA")), request.getParameter("heureA"));
@@ -60,7 +60,7 @@ public class volServlet extends HttpServlet {
 		}
 		catch (Exception e) {
 			e.printStackTrace();
-			log.error("Erreur enregistrement utilisateur");
+			log.error("Erreur enregistrement vol");
 			
 			s.getTransaction().rollback();
 		}

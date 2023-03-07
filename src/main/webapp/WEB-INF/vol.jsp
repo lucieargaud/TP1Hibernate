@@ -20,7 +20,7 @@
 <form method="post">
 		<div class="mb-3">
 			<label for="exampleInputPassword1" class="form-label">Date du départ </label>
-			<input type="text" name="dateD" class="form-control"id="exampleInputPassword1">
+			<input type="date" name="dateD" class="form-control"id="exampleInputPassword1">
 		</div>
 		<div class="mb-3">
 			<label for="exampleInputPassword1" class="form-label">Heure du départ </label>
@@ -28,7 +28,7 @@
 		</div>
 		<div class="mb-3">
 			<label for="exampleInputPassword1" class="form-label">Date d'arrivée </label>
-			<input type="text" name="dateA" class="form-control"id="exampleInputPassword1">
+			<input type="date" name="dateA" class="form-control"id="exampleInputPassword1">
 		</div>
 		<div class="mb-3">
 			<label for="exampleInputPassword1" class="form-label">Heure d'arrivée </label>

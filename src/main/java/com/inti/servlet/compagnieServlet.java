@@ -37,7 +37,7 @@ public class compagnieServlet extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	
 		s = HibernateUtil.getSessionFactory().openSession();
-		log.debug("Connexion à la BDD et configuration d'hibernate depuis commande");
+		log.debug("Connexion à la BDD et configuration d'hibernate depuis compagnie");
 		
 		this.getServletContext().getRequestDispatcher("/WEB-INF/compagnie.jsp").forward(request, response);
 		
@@ -51,7 +51,7 @@ public class compagnieServlet extends HttpServlet {
 		try 
 		{
 			s.beginTransaction();
-			log.info("Début enregistrement commande");
+			log.info("Début enregistrement compagnie Aérienne");
 			
 			CompagnieAerienne c1 = new CompagnieAerienne(request.getParameter("nom"));
 		
@@ -62,7 +62,7 @@ public class compagnieServlet extends HttpServlet {
 		}
 		catch (Exception e) {
 			e.printStackTrace();
-			log.error("Erreur enregistrement utilisateur");
+			log.error("Erreur enregistrement compagnie");
 			
 			s.getTransaction().rollback();
 		}
