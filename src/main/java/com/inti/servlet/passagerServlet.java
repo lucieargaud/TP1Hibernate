@@ -20,7 +20,7 @@ public class passagerServlet extends HttpServlet {
 
 	private Logger log = LogManager.getLogger();
 	private Session s;
-
+	
 	public passagerServlet() {
 		super();
 	}
