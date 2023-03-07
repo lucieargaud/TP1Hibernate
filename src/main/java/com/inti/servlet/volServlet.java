@@ -13,8 +13,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hibernate.Session;
 
-import com.inti.model.Commande;
-import com.inti.model.Utilisateur;
+
 import com.inti.model.Vol;
 import com.inti.util.HibernateUtil;
 
@@ -51,7 +50,7 @@ public class volServlet extends HttpServlet {
 			s.beginTransaction();
 			log.info("Début enregistrement commande");
 			
-			Vol v1 = new Vol (request.getParameter("id"), LocalDate.parse(request.getParameter("dateD")),request.getParameter("heureD"), 
+			Vol v1 = new Vol (LocalDate.parse(request.getParameter("dateD")),request.getParameter("heureD"), 
 					LocalDate.parse(request.getParameter("dateA")), request.getParameter("heureA"));
 			
 			s.save(v1);

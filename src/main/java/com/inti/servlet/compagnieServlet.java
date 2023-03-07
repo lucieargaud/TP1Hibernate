@@ -13,9 +13,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hibernate.Session;
 
-import com.inti.model.Commande;
+
 import com.inti.model.CompagnieAerienne;
-import com.inti.model.Utilisateur;
+
 import com.inti.model.Vol;
 import com.inti.util.HibernateUtil;
 
@@ -53,7 +53,7 @@ public class compagnieServlet extends HttpServlet {
 			s.beginTransaction();
 			log.info("Début enregistrement commande");
 			
-			CompagnieAerienne c1 = new CompagnieAerienne(request.getParameter("id"), request.getParameter("nom"));
+			CompagnieAerienne c1 = new CompagnieAerienne(request.getParameter("nom"));
 		
 			s.save(c1);
 
