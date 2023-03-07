@@ -11,43 +11,44 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hibernate.Session;
 
-
-import com.inti.model.Client;
+import com.inti.model.Passager;
 import com.inti.util.HibernateUtil;
 
-@WebServlet("/client")
-public class nouvClientServlet extends HttpServlet {
+@WebServlet("/passager")
+public class passagerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+
 	private Logger log = LogManager.getLogger();
 	private Session s;
 	
-    public nouvClientServlet() {
-        super();
-    }
-
+	public passagerServlet() {
+		super();
+	}
 	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		s = HibernateUtil.getSessionFactory().openSession();
 		log.debug("Connexion à la BDD et configuration d'hibernate depuis commande");
-		//System.out.println("Connexion : "+s);
-		this.getServletContext().getRequestDispatcher("/WEB-INF/inscriptionClient.jsp").forward(request, response);
+		System.out.println("Connexion : " + s);
+		this.getServletContext().getRequestDispatcher("/WEB-INF/passager.jsp").forward(request, response);
 
+		response.getWriter().append("/WEB-INF/passager.jsp").append(request.getContextPath());
 	}
 
 	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		Passager p;
 		try {
 
+
 			s.beginTransaction();
+
 			log.info("Début enregistrement");
 
-			 Client c = new Client (request.getParameter("nom"),request.getParameter("prenom"),request.getParameter("adresse"),request.getParameter("tel"),request.getParameter("mail"));
+			 p = new Passager (request.getParameter("nom"),request.getParameter("prenom"));
 			
-			s.save(c);
+			s.save(p);
 
 			s.getTransaction().commit();
 		} catch (Exception e) {
@@ -58,6 +59,7 @@ public class nouvClientServlet extends HttpServlet {
 
 			s.getTransaction().rollback();
 		}
+		
 		doGet(request, response);
 	}
 
