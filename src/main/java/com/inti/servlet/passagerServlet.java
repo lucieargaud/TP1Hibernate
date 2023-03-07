@@ -24,7 +24,7 @@ public class passagerServlet extends HttpServlet {
 	public passagerServlet() {
 		super();
 	}
-
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		s = HibernateUtil.getSessionFactory().openSession();
