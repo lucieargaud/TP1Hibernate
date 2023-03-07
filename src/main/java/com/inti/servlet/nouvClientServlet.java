@@ -15,7 +15,7 @@ import org.hibernate.Session;
 import com.inti.model.Client;
 import com.inti.util.HibernateUtil;
 
-@WebServlet("/inscriptionClient")
+@WebServlet("/client")
 public class nouvClientServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -28,23 +28,24 @@ public class nouvClientServlet extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+
 		s = HibernateUtil.getSessionFactory().openSession();
 		log.debug("Connexion à la BDD et configuration d'hibernate depuis commande");
-		System.out.println("Connexion : "+s);
+		//System.out.println("Connexion : "+s);
 		this.getServletContext().getRequestDispatcher("/WEB-INF/inscriptionClient.jsp").forward(request, response);
 
 	}
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Client c;
+		
 		try {
 
 			s.beginTransaction();
-
 			log.info("Début enregistrement");
 
-			 c = new Client (request.getParameter("nom"),request.getParameter("prenom"),request.getParameter("adresse"),request.getParameter("tel"),request.getParameter("mail"));
+			 Client c = new Client (request.getParameter("nom"),request.getParameter("prenom"),request.getParameter("adresse"),request.getParameter("tel"),request.getParameter("mail"));
 			
 			s.save(c);
 
