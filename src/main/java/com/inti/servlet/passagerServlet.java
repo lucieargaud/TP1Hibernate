@@ -32,7 +32,7 @@ public class passagerServlet extends HttpServlet {
 		System.out.println("Connexion : " + s);
 		this.getServletContext().getRequestDispatcher("/WEB-INF/passager.jsp").forward(request, response);
 
-		// response.getWriter().append("/WEB-INF/passager.jsp").append(request.getContextPath());
+		response.getWriter().append("/WEB-INF/passager.jsp").append(request.getContextPath());
 	}
 
 	
