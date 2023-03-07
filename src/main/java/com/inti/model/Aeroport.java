@@ -1,9 +1,25 @@
 package com.inti.model;
 
-public class Aeroport {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
+@Entity
+@Table
+public class Aeroport {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idAeroport;
 	private String nom;
+	
+	@ManyToOne
+	@JoinColumn(name="idVille")
+	private Ville ville;
 	
 	public Aeroport() {
 		super();
@@ -24,6 +40,15 @@ public class Aeroport {
 	}
 	public void setNom(String nom) {
 		this.nom = nom;
+	}
+	
+	
+	
+	public Ville getVille() {
+		return ville;
+	}
+	public void setVille(Ville ville) {
+		this.ville = ville;
 	}
 	@Override
 	public String toString() {

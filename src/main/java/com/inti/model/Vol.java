@@ -1,14 +1,43 @@
 package com.inti.model;
 
 import java.time.LocalDate;
+import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table
 public class Vol {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idVol;
 	private LocalDate dateDepart;
 	private String heureDepart;
 	private LocalDate dateArrivee;
 	private String heureArrivee;
+	
+	@ManyToMany
+	@JoinTable(name="CompAer_Vol",
+	joinColumns = @JoinColumn(name="idVol"),
+	inverseJoinColumns = @JoinColumn(name="idCompAer"))
+	private List<CompagnieAerienne> listeCompAer;
+	
+	@OneToMany(mappedBy = "vol", targetEntity = Reservation.class)
+	private List<Reservation> listeReservation;
+	
+	@ManyToOne
+	@JoinColumn(name="idAeroport")
+	private Aeroport aeroportDepart;
 	
 	public Vol() {
 		super();
@@ -61,6 +90,15 @@ public class Vol {
 	}
 	public void setHeureArrivee(String heureArrivee) {
 		this.heureArrivee = heureArrivee;
+	}
+	
+	
+	
+	public List<CompagnieAerienne> getListeCompAer() {
+		return listeCompAer;
+	}
+	public void setListeCompAer(List<CompagnieAerienne> listeCompAer) {
+		this.listeCompAer = listeCompAer;
 	}
 	@Override
 	public String toString() {
