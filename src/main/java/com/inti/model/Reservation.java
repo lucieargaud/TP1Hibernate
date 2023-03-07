@@ -35,10 +35,9 @@ public class Reservation {
 	public Reservation() {
 		super();
 	}
-	public Reservation(LocalDate date, int numero) {
+	public Reservation(LocalDate date) {
 		super();
 		this.date = date;
-		this.numero = numero;
 	}
 	
 	public void annuler()
@@ -81,6 +80,13 @@ public class Reservation {
 	}
 	public void setPassager(Passager passager) {
 		this.passager = passager;
+	}
+	
+	public Vol getVol() {
+		return vol;
+	}
+	public void setVol(Vol vol) {
+		this.vol = vol;
 	}
 	@Override
 	public String toString() {
