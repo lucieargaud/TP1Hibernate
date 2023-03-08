@@ -1,7 +1,6 @@
 package com.inti.servlet;
 
 import java.io.IOException;
-import java.time.LocalDate;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,7 +15,6 @@ import org.hibernate.Session;
 
 import com.inti.model.CompagnieAerienne;
 
-import com.inti.model.Vol;
 import com.inti.util.HibernateUtil;
 
 @WebServlet("/compagnie")

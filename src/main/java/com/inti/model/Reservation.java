@@ -18,7 +18,6 @@ public class Reservation {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idReservation;
 	private LocalDate date;
-	private int numero;
 	
 	@ManyToOne
 	@JoinColumn(name="idClient")
@@ -40,16 +39,6 @@ public class Reservation {
 		this.date = date;
 	}
 	
-	public void annuler()
-	{
-		
-	}
-	
-	public void confirmer()
-	{
-		
-	}
-	
 	public int getIdReservation() {
 		return idReservation;
 	}
@@ -62,12 +51,7 @@ public class Reservation {
 	public void setDate(LocalDate date) {
 		this.date = date;
 	}
-	public int getNumero() {
-		return numero;
-	}
-	public void setNumero(int numero) {
-		this.numero = numero;
-	}
+
 	
 	public Client getClient() {
 		return client;
@@ -90,9 +74,10 @@ public class Reservation {
 	}
 	@Override
 	public String toString() {
-		return "Reservation [idReservation=" + idReservation + ", date=" + date + ", numero=" + numero + "]";
+		return "Reservation [idReservation=" + idReservation + ", date=" + date + ", client=" + client + ", passager="
+				+ passager + ", vol=" + vol + "]";
 	}
-	
-	
+
+
 	
 }

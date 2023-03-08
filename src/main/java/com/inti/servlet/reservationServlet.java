@@ -14,7 +14,6 @@ import org.apache.logging.log4j.Logger;
 import org.hibernate.Session;
 
 import com.inti.model.Client;
-import com.inti.model.CompagnieAerienne;
 import com.inti.model.Passager;
 import com.inti.model.Reservation;
 import com.inti.model.Vol;

@@ -2,6 +2,8 @@ package com.inti.servlet;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,7 +15,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hibernate.Session;
 
-
+import com.inti.model.Aeroport;
+import com.inti.model.CompagnieAerienne;
 import com.inti.model.Vol;
 import com.inti.util.HibernateUtil;
 
@@ -31,7 +34,6 @@ public class volServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
 
 		s = HibernateUtil.getSessionFactory().openSession();
 		log.debug("Connexion à la BDD et configuration d'hibernate depuis vol");
@@ -53,6 +55,20 @@ public class volServlet extends HttpServlet {
 			Vol v1 = new Vol (LocalDate.parse(request.getParameter("dateD")),request.getParameter("heureD"), 
 					LocalDate.parse(request.getParameter("dateA")), request.getParameter("heureA"));
 			
+			Aeroport aDep= s.get(Aeroport.class, Integer.parseInt(request.getParameter("aeroportD")));
+			Aeroport aArr= s.get(Aeroport.class, Integer.parseInt(request.getParameter("aeroportA")));
+			
+			List<CompagnieAerienne> listeCompAer = new ArrayList<>();
+			String[] tabCompAer = request.getParameterValues("compAer");
+			
+			for(int i=0; i<tabCompAer.length; i++)
+			{
+				listeCompAer.add(new CompagnieAerienne(tabCompAer[i]));
+			}
+			 
+			v1.setListeCompAer(listeCompAer);
+			v1.setAeroportDepart(aDep);
+			v1.setAeroportArrivee(aArr);
 			s.save(v1);
 
 			

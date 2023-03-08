@@ -34,12 +34,24 @@
 			<label for="exampleInputPassword1" class="form-label">Heure d'arrivée </label>
 			<input type="text" name="heureA" class="form-control"id="exampleInputPassword1">
 		</div>
-	
+		
+		<div class="mb-3">
+			<label for="inputAeroportD" class="form-label">id de l'aéroport de départ </label>
+			<input type="text" name="aeroportD" class="form-control"id="inputaeroportD">
+		</div>
+		
+		<div class="mb-3">
+			<label for="inputAeroportA" class="form-label">id de l'aéroport d'arrivée </label>
+			<input type="text" name="aeroportA" class="form-control"id="inputAeroportA">
+		</div>
+		
+		<div class="mb-3">
+			<label for="inputCompAer" class="form-label">id de la compagnie aérienne </label>
+			<input type="text" name="CompAer" class="form-control"id="inputCompAer">
+		</div>
 		
 		<button type="submit" class="btn btn-primary">Submit</button>
 		<button type="reset" class="btn btn-danger">Annuler</button>
-	</form>
-
-
+		</form>
 </body>
 </html>

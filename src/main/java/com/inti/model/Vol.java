@@ -36,8 +36,12 @@ public class Vol {
 	private List<Reservation> listeReservation;
 	
 	@ManyToOne
-	@JoinColumn(name="idAeroport")
+	@JoinColumn(name="idAeroportDepart")
 	private Aeroport aeroportDepart;
+	
+	@ManyToOne
+	@JoinColumn(name="idAeroportArrivee")
+	private Aeroport aeroportArrivee;
 	
 	public Vol() {
 		super();
@@ -93,7 +97,24 @@ public class Vol {
 	}
 	
 	
-	
+	public List<Reservation> getListeReservation() {
+		return listeReservation;
+	}
+	public void setListeReservation(List<Reservation> listeReservation) {
+		this.listeReservation = listeReservation;
+	}
+	public Aeroport getAeroportDepart() {
+		return aeroportDepart;
+	}
+	public void setAeroportDepart(Aeroport aeroportDepart) {
+		this.aeroportDepart = aeroportDepart;
+	}
+	public Aeroport getAeroportArrivee() {
+		return aeroportArrivee;
+	}
+	public void setAeroportArrivee(Aeroport aeroportArrivee) {
+		this.aeroportArrivee = aeroportArrivee;
+	}
 	public List<CompagnieAerienne> getListeCompAer() {
 		return listeCompAer;
 	}
