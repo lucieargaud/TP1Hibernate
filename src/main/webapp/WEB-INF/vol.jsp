@@ -47,7 +47,7 @@
 		
 		<div class="mb-3">
 			<label for="inputCompAer" class="form-label">id de la compagnie aérienne </label>
-			<input type="text" name="CompAer" class="form-control"id="inputCompAer">
+			<input type="text" name="compAer" class="form-control"id="inputCompAer">
 		</div>
 		
 		<button type="submit" class="btn btn-primary">Submit</button>

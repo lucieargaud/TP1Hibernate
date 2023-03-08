@@ -63,7 +63,7 @@ public class volServlet extends HttpServlet {
 			
 			for(int i=0; i<tabCompAer.length; i++)
 			{
-				listeCompAer.add(new CompagnieAerienne(tabCompAer[i]));
+				listeCompAer.add(s.get(CompagnieAerienne.class, Integer.parseInt(tabCompAer[i])));
 			}
 			 
 			v1.setListeCompAer(listeCompAer);
